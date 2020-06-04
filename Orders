@@ -1,0 +1,54 @@
+import java.util.*;
+import java.io.*;
+public class Orders{
+	public static void main(String args[])
+	{
+		System.out.println("Enter orders");
+		Scanner s=new Scanner(System.in);
+		String orders[][] = new String[300][300];
+		//String orders[][] = [item1,item2],[item3],[item2],[item1,item2]];
+		orders[0][0]="item1";
+		orders[0][1]="item2";
+		orders[1][0]="item3";
+		orders[2][0]="item2";
+		orders[3][0]="item1";
+		orders[3][1]="item2";
+		int items_list[][]= new int[300][300];
+		for( int i=0;i<orders.length;i++)
+		{
+			for(int j=0;j<orders[i].length;j++)
+			{
+				int ind =Integer.parseInt(orders[i][j].substring(4))-1;
+				int colind =items_list[ind].length;
+				items_list[ind][colind] = i+1;
+			}
+		}
+int m1=0;
+int m1ind=-1;
+int m2=0;
+int m2ind=-1;
+		for(int i=0;i<items_list.length;i++)
+		{
+			int tlen = items_list[i].length;
+			if(tlen>m1)
+			{
+				m2=m1;
+				m2ind=m1ind;
+				m1=tlen;
+				m1ind=i;
+			}
+			else if(tlen>m2)
+			{
+				m2=tlen;
+				m2ind=i;
+			}
+			else{
+			}
+
+		}
+		System.out.println("first highest is "+items_list[m1ind]);
+		System.out.println("second highest is "+items_list[m2ind]);
+		
+	}
+
+}
